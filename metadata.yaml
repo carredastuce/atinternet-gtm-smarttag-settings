@@ -1,5 +1,5 @@
 homepage: "https://www.atinternet.com"
 documentation: "https://developers.atinternet-solutions.com/"
 versions:
-  - sha: 
+  - sha: 432d52cf56a79bc8d317cbf40c1ccedf9ce9592c
     changeNotes: Initial release.
