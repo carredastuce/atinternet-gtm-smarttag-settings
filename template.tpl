@@ -1,4 +1,4 @@
-﻿___TERMS_OF_SERVICE___
+___TERMS_OF_SERVICE___
 
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
@@ -13,8 +13,10 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "AT Internet Settings by 55",
-  "categories": ["ANALYTICS"],
+  "displayName": "AT Internet Settings",
+  "categories": [
+    "ANALYTICS"
+  ],
   "description": "This variable enables you to configure AT Internet settings for use accross multiple AT Internet tags. Developed in partnership with 55 (fifty-five.com)",
   "containerContexts": [
     "WEB"
@@ -620,6 +622,56 @@ ___TEMPLATE_PARAMETERS___
             "help": "ID of third category level. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/custom-tree-structure-javascript-en/\"\u003eAT Internet Custom Tree Structure documentation\u003c/a\u003e for more details."
           }
         ]
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "useConsent",
+        "checkboxText": "True",
+        "simpleValueType": true,
+        "help": "Use Didomi Privacy Feature",
+        "displayName": "Activate Didomi Hybrid Privacy mode"
+      },
+      {
+        "type": "TEXT",
+        "name": "consent",
+        "displayName": "setVisitorMode",
+        "simpleValueType": true,
+        "help": "Use default value (optin, optout, random)",
+        "valueHint": "optin",
+        "enablingConditions": [
+          {
+            "paramName": "useConsent",
+            "paramValue": true,
+            "type": "EQUALS"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
+    "name": "Propriétés",
+    "displayName": "Propriétés",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
+      {
+        "type": "SIMPLE_TABLE",
+        "name": "properties",
+        "displayName": "Liste Propriétés",
+        "simpleTableColumns": [
+          {
+            "defaultValue": "",
+            "displayName": "Propriété",
+            "name": "key",
+            "type": "TEXT"
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Valeur",
+            "name": "value",
+            "type": "TEXT"
+          }
+        ]
       }
     ]
   }
@@ -630,6 +682,7 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 const makeTableMap = require('makeTableMap');
 const log = require('logToConsole');
+const copyFromWindow = require('copyFromWindow');
 
 log('GTM AT Internet Variable Template - Data =', data);
 
@@ -639,6 +692,9 @@ const smarttagUrl = data.smarttagUrl;
 // Tracker Settings
 const trackerConfiguration = makeTableMap(data.trackerConfiguration || [{}], 'key', 'value');
 const trackerContext = makeTableMap(data.trackerContext || [{}], 'key', 'value');
+
+// Properties
+const properties = makeTableMap(data.properties || [{}], 'key', 'value');
 
 // Page Settings variables
 const pageName = data.pageName;
@@ -679,10 +735,15 @@ const category1 = data.category1;
 const category2 = data.category2;
 const category3 = data.category3;
 
+// Didomi Consent
+const consent = data.consent;
+
 return {
   'scriptURL': smarttagUrl,
   'trackerConfiguration': trackerConfiguration,
   'trackerContext': trackerContext,
+  'props': properties,
+  'consent': consent,
   'page': {
     'name': pageName,
     'chapter1': pageChapter1,
@@ -719,7 +780,7 @@ return {
     'category1': category1,
     'category2': category2,
     'category3': category3,
-  }
+  }  
 };
 
 
@@ -743,6 +804,16 @@ ___WEB_PERMISSIONS___
       ]
     },
     "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "access_globals",
+        "versionId": "1"
+      },
+      "param": []
+    },
+    "isRequired": true
   }
 ]
 
@@ -754,6 +825,4 @@ scenarios: []
 
 ___NOTES___
 
-Created on 06/08/2020 à 11:31:12
-
-
+Created on 01/03/2021 à 11:31:12
