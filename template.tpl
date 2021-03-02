@@ -682,7 +682,6 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 const makeTableMap = require('makeTableMap');
 const log = require('logToConsole');
-const copyFromWindow = require('copyFromWindow');
 
 log('GTM AT Internet Variable Template - Data =', data);
 
@@ -804,16 +803,6 @@ ___WEB_PERMISSIONS___
       ]
     },
     "isRequired": true
-  },
-  {
-    "instance": {
-      "key": {
-        "publicId": "access_globals",
-        "versionId": "1"
-      },
-      "param": []
-    },
-    "isRequired": true
   }
 ]
 
@@ -825,4 +814,4 @@ scenarios: []
 
 ___NOTES___
 
-Created on 01/03/2021 à 11:31:12
+Created on 06/08/2020 à 11:31:12
