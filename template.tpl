@@ -100,10 +100,91 @@ ___TEMPLATE_PARAMETERS___
   },
   {
     "type": "GROUP",
-    "name": "More Settings",
+    "name": "IdentifiedVisitors",
+    "displayName": "Identified Visitors",
+    "groupStyle": "ZIPPY_OPEN_ON_PARAM",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "visitorId",
+        "displayName": "Visitor ID",
+        "simpleValueType": true,
+        "help": "Visitor ID (numerical or textual). See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/users-javascript-en/identified-visitors-javascript-en/\"\u003eAT Internet Identified Visitors documentation\u003c/a\u003e for more details."
+      },
+      {
+        "type": "TEXT",
+        "name": "visitorCategory",
+        "displayName": "Visitor Category",
+        "simpleValueType": true,
+        "help": "Category to which the visitor belongs. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/users-javascript-en/identified-visitors-javascript-en/\"\u003eAT Internet Identified Visitors documentation\u003c/a\u003e for more details."
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
+    "name": "MVTesting",
+    "displayName": "MV Testing",
+    "groupStyle": "ZIPPY_OPEN_ON_PARAM",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "test",
+        "displayName": "Test",
+        "simpleValueType": true,
+        "help": "ID and name of the test, in the format ID[name_test]. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/mv-testing-javascript-en/\"\u003eAT Internet MV Testing documentation\u003c/a\u003e for more details."
+      },
+      {
+        "type": "TEXT",
+        "name": "waveId",
+        "displayName": "Wave ID",
+        "simpleValueType": true,
+        "help": "ID of the wave (group of creatives). See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/mv-testing-javascript-en/\"\u003eAT Internet MV Testing documentation\u003c/a\u003e for more details."
+      },
+      {
+        "type": "TEXT",
+        "name": "creation",
+        "displayName": "Creation",
+        "simpleValueType": true,
+        "help": "ID and name of creatives (combination of versions for each variable) in the format ID[name_creation]. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/mv-testing-javascript-en/\"\u003eAT Internet MV Testing documentation\u003c/a\u003e for more details."
+      },
+      {
+        "type": "TEXT",
+        "name": "experiences",
+        "displayName": "Variables and Versions",
+        "simpleValueType": true,
+        "help": "Indicate an array of objects with variables and versions. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/mv-testing-javascript-en/\"\u003eAT Internet MV Testing documentation\u003c/a\u003e for more details."
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
+    "name": "MoreSettings",
     "displayName": "More Settings",
     "groupStyle": "ZIPPY_OPEN_ON_PARAM",
     "subParams": [
+      {
+        "type": "CHECKBOX",
+        "name": "useConsent",
+        "checkboxText": "True",
+        "simpleValueType": true,
+        "help": "Use Didomi Privacy Feature",
+        "displayName": "Activate Didomi Hybrid Privacy mode"
+      },
+      {
+        "type": "TEXT",
+        "name": "consent",
+        "displayName": "setVisitorMode",
+        "simpleValueType": true,
+        "help": "Use default value (optin, optout, random)",
+        "valueHint": "optin",
+        "enablingConditions": [
+          {
+            "paramName": "useConsent",
+            "paramValue": true,
+            "type": "EQUALS"
+          }
+        ]
+      },
       {
         "type": "GROUP",
         "name": "Tracker",
@@ -243,28 +324,6 @@ ___TEMPLATE_PARAMETERS___
                 ]
               }
             ]
-          }
-        ]
-      },
-      {
-        "type": "GROUP",
-        "name": "Identified Visitors",
-        "displayName": "Identified Visitors",
-        "groupStyle": "ZIPPY_OPEN_ON_PARAM",
-        "subParams": [
-          {
-            "type": "TEXT",
-            "name": "visitorId",
-            "displayName": "Visitor ID",
-            "simpleValueType": true,
-            "help": "Visitor ID (numerical or textual). See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/users-javascript-en/identified-visitors-javascript-en/\"\u003eAT Internet Identified Visitors documentation\u003c/a\u003e for more details."
-          },
-          {
-            "type": "TEXT",
-            "name": "visitorCategory",
-            "displayName": "Visitor Category",
-            "simpleValueType": true,
-            "help": "Category to which the visitor belongs. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/users-javascript-en/identified-visitors-javascript-en/\"\u003eAT Internet Identified Visitors documentation\u003c/a\u003e for more details."
           }
         ]
       },
@@ -517,42 +576,6 @@ ___TEMPLATE_PARAMETERS___
       },
       {
         "type": "GROUP",
-        "name": "MV Testing",
-        "displayName": "MV Testing",
-        "groupStyle": "ZIPPY_OPEN_ON_PARAM",
-        "subParams": [
-          {
-            "type": "TEXT",
-            "name": "test",
-            "displayName": "Test",
-            "simpleValueType": true,
-            "help": "ID and name of the test, in the format ID[name_test]. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/mv-testing-javascript-en/\"\u003eAT Internet MV Testing documentation\u003c/a\u003e for more details."
-          },
-          {
-            "type": "TEXT",
-            "name": "waveId",
-            "displayName": "Wave ID",
-            "simpleValueType": true,
-            "help": "ID of the wave (group of creatives). See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/mv-testing-javascript-en/\"\u003eAT Internet MV Testing documentation\u003c/a\u003e for more details."
-          },
-          {
-            "type": "TEXT",
-            "name": "creation",
-            "displayName": "Creation",
-            "simpleValueType": true,
-            "help": "ID and name of creatives (combination of versions for each variable) in the format ID[name_creation]. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/mv-testing-javascript-en/\"\u003eAT Internet MV Testing documentation\u003c/a\u003e for more details."
-          },
-          {
-            "type": "TEXT",
-            "name": "experiences",
-            "displayName": "Variables and Versions",
-            "simpleValueType": true,
-            "help": "Indicate an array of objects with variables and versions. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/mv-testing-javascript-en/\"\u003eAT Internet MV Testing documentation\u003c/a\u003e for more details."
-          }
-        ]
-      },
-      {
-        "type": "GROUP",
         "name": "Dynamic Labels",
         "displayName": "Dynamic Labels",
         "groupStyle": "ZIPPY_OPEN_ON_PARAM",
@@ -622,35 +645,12 @@ ___TEMPLATE_PARAMETERS___
             "help": "ID of third category level. See \u003ca href\u003d\"https://developers.atinternet-solutions.com/javascript-en/content-javascript-en/custom-tree-structure-javascript-en/\"\u003eAT Internet Custom Tree Structure documentation\u003c/a\u003e for more details."
           }
         ]
-      },
-      {
-        "type": "CHECKBOX",
-        "name": "useConsent",
-        "checkboxText": "True",
-        "simpleValueType": true,
-        "help": "Use Didomi Privacy Feature",
-        "displayName": "Activate Didomi Hybrid Privacy mode"
-      },
-      {
-        "type": "TEXT",
-        "name": "consent",
-        "displayName": "setVisitorMode",
-        "simpleValueType": true,
-        "help": "Use default value (optin, optout, random)",
-        "valueHint": "optin",
-        "enablingConditions": [
-          {
-            "paramName": "useConsent",
-            "paramValue": true,
-            "type": "EQUALS"
-          }
-        ]
       }
     ]
   },
   {
     "type": "GROUP",
-    "name": "Propriétés",
+    "name": "Properties",
     "displayName": "Propriétés",
     "groupStyle": "ZIPPY_CLOSED",
     "subParams": [
@@ -815,3 +815,5 @@ scenarios: []
 ___NOTES___
 
 Created on 06/08/2020 à 11:31:12
+
+
